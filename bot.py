@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 from PIL import Image, ImageOps, ImageDraw
 
-TOKEN = "8250598286:AAEFQVWC205YdEALmAzEITO6kKxwZQDlfx8"
+TOKEN = "7930739159:AAEqXuDVlLWlvKmk7bDhBu3TVwyucRC_J5I"
 
 def limpar_fundo_e_pegar_cor(img):
     img = img.convert("RGBA")
@@ -57,4 +57,5 @@ async def processar_layout(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         except Exception as e:
             await update.message.reply_text(f"Erro: {e}")
+
 
