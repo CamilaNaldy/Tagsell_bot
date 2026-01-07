@@ -9,7 +9,7 @@ async def processar_layout(update: Update, context: ContextTypes.DEFAULT_TYPE):
     foto = update.message.photo
 
     if legenda.strip().upper() == "TEMA" and foto:
-        await update.message.reply_text("Gerando layout sem bordas (Rente ao topo)...")
+        await update.message.reply_text("Gerando layout...")
 
         # 1. Baixar a foto enviada
         arquivo_foto = await foto[-1].get_file()
@@ -19,7 +19,7 @@ async def processar_layout(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # 2. Configurações A4 em 150 DPI
         LARGURA_A4 = 1240
         ALTURA_A4 = 1754
-        ALTURA_RETANGULO = 472 # Exatos 8cm em 150 DPI
+        ALTURA_RETANGULO = 295 # Exatos 5cm em 150 DPI
 
         # 3. Criar Folha Branca (O fundo garante o restante vazio)
         folha = Image.new('RGB', (LARGURA_A4, ALTURA_A4), (255, 255, 255))
@@ -43,8 +43,8 @@ async def processar_layout(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         await update.message.reply_document(
             document=output, 
-            filename="layout_sem_bordas.jpg",
-            caption="Aqui está o layout A4. Cabeçalho de 8cm rente às bordas."
+            filename="layout.jpg",
+            caption="Tema criado com sucesso."
         )
     else:
         await update.message.reply_text("Comando inválido. Envie a foto com a legenda TEMA.")
@@ -53,3 +53,4 @@ if __name__ == '__main__':
     application = Application.builder().token(TOKEN).build()
     application.add_handler(MessageHandler(filters.ALL, processar_layout))
     application.run_polling()
+
