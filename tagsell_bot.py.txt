@@ -4,7 +4,7 @@ from telegram.ext import Application, MessageHandler, filters, ContextTypes
 from PIL import Image
 
 # Substitua pelo Token que o BotFather te deu
-TOKEN = "SEU_TOKEN_AQUI"
+TOKEN = "8250598286:AAEFQVWC205YdEALmAzEITO6kKxwZQDlfx8"
 
 async def processar_layout(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Pega a legenda e verifica se há foto
@@ -63,4 +63,5 @@ if __name__ == '__main__':
     application = Application.builder().token(TOKEN).build()
     application.add_handler(MessageHandler(filters.ALL, processar_layout))
     print("Bot rodando...")
+
     application.run_polling()
