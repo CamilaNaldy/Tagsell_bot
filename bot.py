@@ -7,9 +7,6 @@ from PIL import Image, ImageOps, ImageDraw
 
 TOKEN = "8250598286:AAEFQVWC205YdEALmAzEITO6kKxwZQDlfx8"
 
-# ADICIONE OS IDS DOS 5 USUÁRIOS AQUI (separados por vírgula)
-USUARIOS_AUTORIZADOS = [6090164719] 
-
 def limpar_fundo_e_pegar_cor(img):
     img = img.convert("RGBA")
     data = np.array(img)
@@ -60,3 +57,4 @@ async def processar_layout(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         except Exception as e:
             await update.message.reply_text(f"Erro: {e}")
+
